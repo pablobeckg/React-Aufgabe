@@ -1,0 +1,12 @@
+div {
+    text-align: center;
+}
+
+button {
+    border-radius: 30px;
+    border: none;
+    background-color: coral;
+    padding: 0.5rem;
+    color: white;
+    width: 10rem;
+}

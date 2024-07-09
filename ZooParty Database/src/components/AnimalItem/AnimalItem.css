@@ -1,0 +1,17 @@
+section {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.content-wrapper {
+    text-align: center;
+    border: 1px solid white;
+}
+
+.fun-facts {
+    background-color: rgb(8, 16, 73);
+    text-align: left;
+}
