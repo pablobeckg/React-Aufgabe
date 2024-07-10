@@ -1,0 +1,18 @@
+.wrapper {
+    padding: 2rem;
+    background-color: blue;
+    color: white;
+}
+
+.check {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.antwort {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+}
+

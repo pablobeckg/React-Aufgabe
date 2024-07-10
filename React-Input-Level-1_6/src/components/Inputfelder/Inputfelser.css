@@ -1,0 +1,16 @@
+div {
+    width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin: 0 auto;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.child1 { grid-area: 1 / 1 / 2 / 2; }
+
+.child3 { grid-area: 1 / 3 / 2 / 4; }
+
+.child5 { grid-area: 1 / 5 / 2 / 6; }
+
+  

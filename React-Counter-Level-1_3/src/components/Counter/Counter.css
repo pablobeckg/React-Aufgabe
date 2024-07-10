@@ -1,0 +1,15 @@
+.counter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons-row {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds space between the buttons and counter */
+}
+
+.reset-row {
+    margin-top: 10px; /* Adds some space between the button rows */
+}
