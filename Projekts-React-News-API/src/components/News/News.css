@@ -1,5 +1,13 @@
-h1 {
+.title-header {
     color: brown;
+    font-size: 5rem;
+    margin-bottom: 2rem;
+}
+
+.search-container {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 2rem;
 }
 
 .news {
@@ -7,6 +15,14 @@ h1 {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
+
+h1 {
+    font-size: 1rem;
+    color: rgb(101, 147, 199);
+    margin-bottom: 1rem;
+}
+
+
 
 img {
     width: 100%;

@@ -5,42 +5,86 @@ import Loader from "../Loader";
 
 const API_KEY = "d8e9c8d4c2214fc1ae922b056ba04f0b";
 
-interface NewsProps {
-  searchInput: string;
-}
-
-const News: React.FC<NewsProps> = ({ searchInput }) => {
+const News = () => {
   const [appleData, setAppleData] = useState<IArticle[] | null>(null);
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [query, setQuery] = useState<string>("apple");
+  const [language, setLanguage] = useState<string>("");
 
-  useEffect(() => {
+  const fetchNews = (query: string, language: string) => {
+    const languageQuery = language ? `&language=${language}` : "";
     fetch(
-      `https://newsapi.org/v2/everything?q=apple&from=2024-07-10&to=2024-07-10&sortBy=popularity&apiKey=${API_KEY}`
+      `https://newsapi.org/v2/everything?q=${query}&from=2024-07-10&to=2024-07-10&sortBy=popularity&apiKey=${API_KEY}${languageQuery}`
     )
       .then((response) => response.json())
       .then((data) => {
         if (data.status === "ok") {
-            setAppleData(data.articles.filter((article: IArticle) => article.title.includes(searchInput)));
+          setAppleData(
+            data.articles.filter(
+              (article: IArticle) => article.title !== "[Removed]"
+            )
+          );
         }
       })
       .catch((error) => {
         console.error("Fehler beim Fetch :-( ", error);
       });
-  }, [searchInput]);  // Dependency array includes searchInput
+  };
+
+  const handleSearch = () => {
+    // Update the query to trigger the fetch
+    if (searchInput.trim() !== query) {
+      setQuery(searchInput);
+    } else {
+      fetchNews(searchInput, language);
+    }
+  };
+
+  useEffect(() => {
+    fetchNews(query, language);
+  }, [query, language]);
 
   return (
-    <section className="news">
+    <>
+      <header>
+        <h1 className="title-header">Breaking News</h1>
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchInput}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setSearchInput(event.target.value);
+            }}
+          />
+          <select
+            value={language}
+            onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
+              setLanguage(event.target.value);
+            }}
+          >
+            <option value="">Select your language</option>
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="de">German</option>
+          </select>
+          <button onClick={handleSearch}>Search</button>
+        </div>
+      </header>
+      <section className="news">
         {appleData ? (
           appleData.map((item, index) => (
             <div key={index}>
               <h1>{item.title}</h1>
-              <h2>{item.description}</h2>
+              <p>{item.description}</p>
               {item.urlToImage && <img src={item.urlToImage} alt="" />}
             </div>
           ))
         ) : (
           <Loader />
         )}
-    </section>
+      </section>
+    </>
   );
 };
 

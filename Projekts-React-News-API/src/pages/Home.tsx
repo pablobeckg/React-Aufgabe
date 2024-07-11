@@ -1,9 +1,11 @@
 import News from "../components/News/News";
 
 const Home = () => {
-    return (
-        <News/>
-    );
-}
- 
+  return (
+    <>
+      <News />
+    </>
+  );
+};
+
 export default Home;
