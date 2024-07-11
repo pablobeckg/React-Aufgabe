@@ -32,7 +32,6 @@ const News = () => {
   };
 
   const handleSearch = () => {
-    // Update the query to trigger the fetch
     if (searchInput.trim() !== query) {
       setQuery(searchInput);
     } else {
