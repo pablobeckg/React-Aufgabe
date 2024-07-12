@@ -1,0 +1,23 @@
+header {
+    display: flex;
+    background-color: #1A3129;
+    justify-content: space-between;
+    width: 100%;
+}
+
+nav {
+   display: flex;
+   align-items: center;
+}
+
+a {
+    margin-right: 1vw;
+}
+
+.contact-button {
+    margin-left: 1vw;
+    background-color: #CBEA7B;
+    border-radius: 8px;
+    padding: 14px 24px;
+
+}
