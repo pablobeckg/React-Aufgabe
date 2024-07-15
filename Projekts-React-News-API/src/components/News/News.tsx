@@ -3,7 +3,8 @@ import "./News.css";
 import { IArticle } from "./Interfaces";
 import Loader from "../Loader";
 
-const API_KEY = "d8e9c8d4c2214fc1ae922b056ba04f0b";
+const apiKey = import.meta.env.VITE_API_KEY;
+// const API_KEY = "d8e9c8d4c2214fc1ae922b056ba04f0b";
 
 const News = () => {
   const [appleData, setAppleData] = useState<IArticle[] | null>(null);
@@ -14,7 +15,7 @@ const News = () => {
   const fetchNews = (query: string, language: string) => {
     const languageQuery = language ? `&language=${language}` : "";
     fetch(
-      `https://newsapi.org/v2/everything?q=${query}&from=2024-07-10&to=2024-07-10&sortBy=popularity&apiKey=${API_KEY}${languageQuery}`
+      `https://newsapi.org/v2/everything?q=${query}&from=2024-07-10&to=2024-07-10&sortBy=popularity&apiKey=${apiKey}${languageQuery}`
     )
       .then((response) => response.json())
       .then((data) => {
